@@ -1,16 +1,23 @@
-#pragma once
-///////////////////////////////////////////////////////////////////////////////
-// This file is part of AWIN class library
-// Copyright (c) 2001-2002 Andy Yamov
-//
-// Permission to use, copy, modify, distribute, and sell this software and
-// its documentation for any purpose is hereby granted without fee
-// 
-// THE SOFTWARE IS PROVIDED_T("AS-IS") AND WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
-// WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
-//
+/*
+This file is part of AWIN class library
+Copyright (c) 2001-2010 Andy Yamov
 
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You can receive a copy of the GNU Lesser General Public License from 
+http://www.gnu.org/
+*/
+
+#ifndef AWIN_WINDOW_H_INCLUDED
+#define AWIN_WINDOW_H_INCLUDED
 
 #include "awin_module.h"
 
@@ -581,3 +588,5 @@ __lret __stdcall subclassed_proc(HWND hwnd, UINT m, WPARAM w, LPARAM l )
 }
 
 END_NAMESPACE_AWIN
+
+#endif //AWIN_WINDOW_H_INCLUDED
