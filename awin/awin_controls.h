@@ -225,8 +225,6 @@ public:
 			list_ctrl::set_item_state( idx, 0, LVIS_SELECTED|LVIS_FOCUSED );
 		}
 	}
-
-//++++++++ Added by Sabelnikov Andrey N. mailto:a.sabelnikov@agnitum.com 14.10.2005 11:54:22 +++++++++++++++++
 	int insert_item( int i, const _char* pstr, LPARAM lParam = NULL)
 	{
 		assert(pstr);
