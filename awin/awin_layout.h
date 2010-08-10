@@ -22,10 +22,13 @@ http://www.gnu.org/
 #include "awin_defs.h"
 
 //define own namespace
-#define NAMESPACE_AWIN_LAYOUT	namespace awin{ namespace layout {
-#define END_NAMESPACE_AWIN_LAYOUT		} }
+//#define NAMESPACE_AWIN_LAYOUT	namespace awin123 { namespace layout456 {
+//#define END_NAMESPACE_AWIN_LAYOUT		} }
 
-NAMESPACE_AWIN_LAYOUT
+
+//NAMESPACE_AWIN_LAYOUT
+namespace awin123 { 
+	namespace layout456 {
 
 enum awin_layout_ancor {
 	layout_ancor_left,
@@ -60,7 +63,7 @@ struct awin_layout_arg {
 class awin_layout_item {
 public:
 	awin_layout_item( 
-		const _rect &rc, 
+		const awin::_rect &rc, 
 		awin_layout_ancor l,
 		awin_layout_ancor t, 
 		awin_layout_ancor r, 
@@ -77,11 +80,11 @@ public:
 	}
 
 	void layout( 
-		const _rect &rect_new_parent, 
-		const _rect &rect_def_parent, 
+		const awin::_rect &rect_new_parent, 
+		const awin::_rect &rect_def_parent, 
 		awin_layout_arg &arg ) {
 
-		_rect	rect_new(
+		awin::_rect	rect_new(
 			calc_coord( rect_def.left, rect_new_parent, rect_def_parent, ancor_left ),
 			calc_coord( rect_def.top, rect_new_parent, rect_def_parent, ancor_top ),
 			calc_coord( rect_def.right, rect_new_parent, rect_def_parent, ancor_right ),
@@ -92,7 +95,7 @@ public:
 	}
 
 	virtual void set_layout( 
-		const _rect &rect_new, 
+		const awin::_rect &rect_new, 
 		awin_layout_arg &arg ) {
 	
 		for( awin_layout_item_list::iterator i = childs.begin(); i != childs.end(); ++i ) {
@@ -103,8 +106,8 @@ public:
 protected:
 	int calc_coord( 
 		int val, 
-		const _rect &rect_new_parent, 
-		const _rect &rect_def_parent, 
+		const awin::_rect &rect_new_parent, 
+		const awin::_rect &rect_def_parent, 
 		awin_layout_ancor a ) {
 
 		if( a == layout_ancor_left ) {
@@ -130,7 +133,7 @@ protected:
 
 protected:
 	awin_layout_ancor	ancor_left, ancor_top, ancor_right, ancor_bottom;
-	_rect				rect_def;
+	awin::_rect			rect_def;
 	typedef std::list<awin_layout_item_ptr>	awin_layout_item_list;
 	awin_layout_item_list	childs;
 };
@@ -147,7 +150,7 @@ public:
 		awin_layout_ancor t, 
 		awin_layout_ancor r, 
 		awin_layout_ancor b )
-			: awin_layout_item( _rect(), l, t, r, b )
+			: awin_layout_item( awin::_rect(), l, t, r, b )
 			, hwnd( h )	{
 
 		::GetWindowRect( hwnd, &rect_def );
@@ -157,7 +160,7 @@ public:
 	}
 
 	void set_layout( 
-		const _rect &rect_new, 
+		const awin::_rect &rect_new, 
 		awin_layout_arg &arg ) {
 
 		arg.hdwp = ::DeferWindowPos( arg.hdwp, hwnd, 0, rect_new.left, rect_new.top, rect_new.width(), rect_new.height(), SWP_DRAWFRAME|SWP_NOZORDER ); 
@@ -178,7 +181,7 @@ class awin_layout : public awin_layout_item {
 public:
 	awin_layout() 
 		: awin_layout_item( 
-			_rect(), 
+			awin::_rect(), 
 			layout_ancor_left, 
 			layout_ancor_top, 
 			layout_ancor_right, 
@@ -211,7 +214,7 @@ public:
 	 * call set_layout
 	 */
 	void set_layout( 
-		const _rect &rect_new, 
+		const awin::_rect &rect_new, 
 		awin_layout_arg &arg ) {
 	
 		__super::set_layout( rect_new, arg );
@@ -220,7 +223,8 @@ private:
 	HWND	hwnd_parent;
 };
 
-
-END_NAMESPACE_AWIN_LAYOUT
+}
+}
+//END_NAMESPACE_AWIN_LAYOUT
 
 #endif //AWIN_LAYOUT_H_INCLUDED
