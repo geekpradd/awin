@@ -22,13 +22,11 @@ http://www.gnu.org/
 #include "awin_defs.h"
 
 //define own namespace
-//#define NAMESPACE_AWIN_LAYOUT	namespace awin123 { namespace layout456 {
-//#define END_NAMESPACE_AWIN_LAYOUT		} }
+#define NAMESPACE_AWIN_LAYOUT	namespace awin { namespace layout {
+#define END_NAMESPACE_AWIN_LAYOUT		} }
 
 
-//NAMESPACE_AWIN_LAYOUT
-namespace awin123 { 
-	namespace layout456 {
+NAMESPACE_AWIN_LAYOUT
 
 enum awin_layout_ancor {
 	layout_ancor_left,
@@ -223,8 +221,7 @@ private:
 	HWND	hwnd_parent;
 };
 
-}
-}
-//END_NAMESPACE_AWIN_LAYOUT
+
+END_NAMESPACE_AWIN_LAYOUT
 
 #endif //AWIN_LAYOUT_H_INCLUDED
