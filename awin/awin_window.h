@@ -78,6 +78,7 @@ public:
 			wndclass.lpszClassName = szDefClass;
 			wndclass.hInstance = module::hinst();
 			wndclass.lpfnWndProc = subclass_proc;
+			wndclass.style	= CS_DBLCLKS;
 			wndclass.hbrBackground = ::GetSysColorBrush( COLOR_WINDOW );
 			wndclass.hCursor = ::LoadCursor(0, MAKEINTRESOURCE(IDC_ARROW));
 
