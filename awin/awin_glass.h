@@ -119,14 +119,15 @@ protected:
 				::InvalidateRect( hwnd, 0, true );
 			}*/
 		}
-		if( m == WM_CTLCOLORSTATIC ) {
+		/*if( m == WM_CTLCOLORSTATIC ) {
 			if( glass_effect_enabled ) {
 				HDC hdc = (HDC)w;
 				::SetBkMode( hdc, TRANSPARENT );
-				SetTextColor( hdc, ::GetSysColor( COLOR_WINDOWTEXT ) );
-				return (INT_PTR)::CreateSolidBrush( get_transparent_color() );
+				::SetTextColor( hdc, RGB(0,0,0) );//::GetSysColor( COLOR_WINDOWTEXT ) );
+				HBRUSH hbr = (HBRUSH)GetStockObject( NULL_BRUSH );
+				return (long_t)hbr;//::CreateSolidBrush( get_transparent_color() );
 			}
-		}
+		}*/
 		return __super::handle_message( m, w, l );
 	}
 
