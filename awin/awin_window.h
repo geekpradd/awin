@@ -165,7 +165,7 @@ protected:
 	virtual __lret on_keydown( long nVirtKey )			{return call_default();}
 	virtual __lret on_keyup( long nVirtKey )				{return call_default();}
 	virtual __lret on_char( long nVirtKey )				{return call_default();}
-	virtual __lret on_getdlgcode( MSG* p )				{return call_default();}
+	virtual __lret on_getdlgcode( MSG* p, long nVirtKey )	{return call_default();}
 	virtual __lret on_notify( __uint32 idc, NMHDR *pnmhdr )						{return notify_reflect();}
 	virtual __lret on_measureitem( int idc, MEASUREITEMSTRUCT *pmsr )			{return notify_reflect();}
 	virtual __lret on_drawitem( int idc, DRAWITEMSTRUCT *pdrw )				{return notify_reflect();}
@@ -454,7 +454,7 @@ __lret	win_impl::handle_message( UINT m, WPARAM w, LPARAM l )
 	case WM_CHAR:			lres = on_char( wp.u32 );break;
 	case WM_KEYDOWN:		lres = on_keydown( wp.u32 );break;
 	case WM_KEYUP:			lres = on_keyup( wp.u32 );break;
-	case WM_GETDLGCODE:		lres = on_getdlgcode( (MSG *)l );break;
+	case WM_GETDLGCODE:		lres = on_getdlgcode( (MSG *)l, (long)w );break;
 	case WM_ERASEBKGND:		lres = on_erasebkgnd( (HDC)w );break; 
 	case WM_HSCROLL:		lres = on_hscroll( wp.by16.lo, wp.by16.hi, (HWND)l );break;
 	case WM_VSCROLL:		lres = on_vscroll( wp.by16.lo, wp.by16.hi, (HWND)l );break;
