@@ -1,0 +1,1 @@
+AWIN is the library for create a small lightweight Windows applications. The library is used in Agnitum products.
